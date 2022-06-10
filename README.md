@@ -1,24 +1,33 @@
-# busca-cep
+# busca-localidade
 
-## Project setup
+### Tecnologias:
+
+- vue.js
+- vuex
+- vue-router
+
+### Funcionalidades:
+
+- realizar cadastro de usuário
+- realizar acesso à aplicação com o usuário cadastrado
+- buscar por cep
+- buscar por endereço
+- favoritar os resultados
+
+### Como instalar as dependências
+
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Como executar
+
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Como verificar código
 
-### Lints and fixes files
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

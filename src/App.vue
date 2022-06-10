@@ -1,30 +1,101 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <header>
+    <nav>
+      <router-link v-if="this.$store.state.userLogged == true" to="/"
+        >Home</router-link
+      >
+      <router-link v-if="this.$store.state.userLogged == true" to="/favoritos"
+        >Favoritos</router-link
+      >
+
+      <span v-if="this.$store.state.userLogged == true">|</span>
+      <a v-if="this.$store.state.userLogged" @click="logout">Logout</a>
+
+      <router-link v-if="this.$store.state.userLogged == false" to="/conectar"
+        >Conectar</router-link
+      >
+      <span v-if="this.$store.state.userLogged == false">|</span>
+      <router-link v-if="this.$store.state.userLogged == false" to="/cadastrar"
+        >Cadastrar</router-link
+      >
+    </nav>
+  </header>
+  <router-view />
+  <footer>💻 Desenvolvido por Gabriel Brasil</footer>
 </template>
 
+<script>
+export default {
+  methods: {
+    logout() {
+      this.$store.commit("setUserLogged", false);
+      this.$router.push("/cadastrar");
+    },
+  },
+};
+</script>
+
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100vh;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #333;
+
+  display: grid;
+  grid-template-rows: 60px 1fr 40px;
+
+  height: 100%;
+}
+
+body {
+  background-color: #eee;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  height: 60px;
+  background-color: #333;
 }
 
 nav {
-  padding: 30px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  color: #eee;
 }
 
 nav a {
-  font-weight: bold;
-  color: #2c3e50;
+  text-decoration: none;
+  color: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+  cursor: pointer;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+nav a:hover {
+  transform: translateX(-5px);
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #eee;
+  background-color: #333;
 }
 </style>
